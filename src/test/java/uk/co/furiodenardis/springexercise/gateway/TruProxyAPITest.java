@@ -2,7 +2,6 @@ package uk.co.furiodenardis.springexercise.gateway;
 
 import com.github.tomakehurst.wiremock.client.WireMock;
 import com.github.tomakehurst.wiremock.junit5.WireMockTest;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.web.client.RestClient;
@@ -14,8 +13,6 @@ import java.util.List;
 import static com.github.tomakehurst.wiremock.client.WireMock.aResponse;
 import static com.github.tomakehurst.wiremock.client.WireMock.stubFor;
 import static com.github.tomakehurst.wiremock.client.WireMock.urlMatching;
-import static com.github.tomakehurst.wiremock.client.WireMock.urlPathEqualTo;
-import static com.github.tomakehurst.wiremock.client.WireMock.urlPathMatching;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
@@ -45,7 +42,7 @@ class TruProxyAPITest {
     }
 
     @Test
-    public void testSearchCompanies_Success() throws Exception {
+    public void testSearchCompanies_Success()  {
 
         stubFor(WireMock.get(urlMatching("/Search\\?Query=" + ACME))
                 .withHeader(TruProxyAPI.apiKeyHeader, WireMock.matching(API_KEY))
@@ -60,7 +57,7 @@ class TruProxyAPITest {
     }
 
     @Test
-    public void testSearchOfficers_Success() throws Exception {
+    public void testSearchOfficers_Success()  {
 
         stubFor(WireMock.get(urlMatching("/Officers\\?CompanyNumber=" + ACME_REG_NO))
                 .withHeader(TruProxyAPI.apiKeyHeader, WireMock.matching(API_KEY))

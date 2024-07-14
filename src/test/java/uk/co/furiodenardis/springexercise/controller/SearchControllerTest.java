@@ -1,11 +1,9 @@
 package uk.co.furiodenardis.springexercise.controller;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.internal.matchers.Any;
 import org.mockito.junit.jupiter.MockitoExtension;
 import uk.co.furiodenardis.springexercise.controller.request.SearchCompanyRequest;
 import uk.co.furiodenardis.springexercise.controller.response.SearchCompaniesResponse;
@@ -14,7 +12,7 @@ import uk.co.furiodenardis.springexercise.service.CompanySearch;
 
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
@@ -30,7 +28,7 @@ class SearchControllerTest {
     private SearchController searchController;
 
     @Test
-    public void testSearchCompanyByName() throws Exception {
+    public void testSearchCompanyByName()  {
         List<Company> companies = getListOfCompanies();
 
         when(companySearchService.searchCompany(API_KEY, ACME, false))
