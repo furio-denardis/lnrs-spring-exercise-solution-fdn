@@ -1,6 +1,7 @@
 package uk.co.furiodenardis.springexercise.service;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import uk.co.furiodenardis.springexercise.gateway.TruProxyAPI;
 import uk.co.furiodenardis.springexercise.model.Company;
@@ -12,6 +13,7 @@ import java.util.function.Predicate;
 
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class CompanySearch {
 
     private final TruProxyAPI truProxyAPI;
@@ -35,6 +37,7 @@ public class CompanySearch {
     }
 
     private List<Officer> listActiveOfficers(final String apiKey, final String companyNumber) {
+        log.info("Getting officers for company no. " + companyNumber);
         return truProxyAPI.getOfficers(apiKey,companyNumber)
             .stream()
             .filter(officer -> Objects.isNull(officer.getResigned_on()))

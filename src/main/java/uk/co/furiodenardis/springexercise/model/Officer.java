@@ -1,6 +1,5 @@
 package uk.co.furiodenardis.springexercise.model;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Builder;
 import lombok.Getter;
 import uk.co.furiodenardis.springexercise.gateway.response.ApiOfficerDto;

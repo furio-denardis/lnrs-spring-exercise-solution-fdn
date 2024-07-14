@@ -3,7 +3,6 @@ package uk.co.furiodenardis.springexercise.model;
 import lombok.Builder;
 import lombok.Getter;
 import uk.co.furiodenardis.springexercise.gateway.response.ApiAddressDto;
-import uk.co.furiodenardis.springexercise.gateway.response.ApiCompanyDto;
 
 @Builder
 @Getter
