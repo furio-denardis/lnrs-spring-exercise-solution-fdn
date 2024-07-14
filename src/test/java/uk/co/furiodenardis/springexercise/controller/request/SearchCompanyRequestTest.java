@@ -21,9 +21,7 @@ class SearchCompanyRequestTest {
             "prova,12345,true"      // both non empty
     })
     void testSearchCriteriaValidationAtLeastOneNonEmpty(String companyName, String companyNo, boolean expected) {
-        SearchCompanyRequest request = new SearchCompanyRequest();
-        request.setCompanyName(companyName);
-        request.setCompanyNumber(companyNo);
+        SearchCompanyRequest request = new SearchCompanyRequest(companyName, companyNo);
 
         boolean actual = request.atLeastOneSearchCriteria();
 

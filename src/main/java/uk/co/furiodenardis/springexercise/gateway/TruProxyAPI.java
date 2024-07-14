@@ -21,13 +21,8 @@ import java.util.Optional;
 @Slf4j
 public class TruProxyAPI {
 
-    @Value("${gateway.truproxyapi.baseurl}")
     private String truProxyBaseUrl;
-
-    @Value("${gateway.truproxyapi.endpoint.search}")
     private String truProxySearchEndpoint;
-
-    @Value("${gateway.truproxyapi.endpoint.officers}")
     private String truProxyOfficersEndpoint;
 
     private static final String parameterQuery = "Query";
@@ -36,8 +31,14 @@ public class TruProxyAPI {
 
     private final RestClient restClient;
 
-    public TruProxyAPI(@Autowired RestClient restClient) {
+    public TruProxyAPI(@Autowired RestClient restClient,
+                       @Value("${gateway.truproxyapi.baseurl}") String truProxyBaseUrl,
+                       @Value("${gateway.truproxyapi.endpoint.search}") String truProxySearchEndpoint,
+                       @Value("${gateway.truproxyapi.endpoint.officers}") String truProxyOfficersEndpoint) {
         this.restClient = restClient;
+        this.truProxyBaseUrl = truProxyBaseUrl;
+        this.truProxySearchEndpoint = truProxySearchEndpoint;
+        this.truProxyOfficersEndpoint = truProxyOfficersEndpoint;
     }
 
     public List<ApiCompanyDto> searchCompanies(final String apiKey,
@@ -49,6 +50,7 @@ public class TruProxyAPI {
                 .toUriString();
 
         try {
+            System.out.println("URL runtime: " + url);
             ApiCompanySearchResponseDto response = restClient.get()
                     .uri(url)
                     .header(apiKeyHeader, apiKey)

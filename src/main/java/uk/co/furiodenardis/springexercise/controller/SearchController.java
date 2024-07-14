@@ -1,7 +1,12 @@
 package uk.co.furiodenardis.springexercise.controller;
 
 import jakarta.validation.Valid;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 import uk.co.furiodenardis.springexercise.controller.request.SearchCompanyRequest;
 import uk.co.furiodenardis.springexercise.controller.response.SearchCompaniesResponse;
 import uk.co.furiodenardis.springexercise.gateway.TruProxyAPI;
