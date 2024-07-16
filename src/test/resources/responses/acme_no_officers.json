@@ -1,0 +1,20 @@
+{
+  "total_results": 1,
+  "items": [
+    {
+      "companyNumber": "12345",
+      "companyType": "ltd",
+      "title": "acme",
+      "companyStatus": "active",
+      "dateOfCreation": "2008-02-11",
+      "address": {
+        "locality": "Retford",
+        "postalCode": "DN22 0AD",
+        "premises": "Boswell Cottage Main Street",
+        "addressLine1": "North Leverton",
+        "country": "England"
+      },
+      "officers": []
+    }
+  ]
+}
