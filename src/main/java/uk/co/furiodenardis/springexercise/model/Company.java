@@ -3,7 +3,6 @@ package uk.co.furiodenardis.springexercise.model;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
-import uk.co.furiodenardis.springexercise.gateway.response.ApiCompanyDto;
 
 import java.util.List;
 
@@ -21,17 +20,5 @@ public class Company {
     private Address address;
     @Setter
     private List<Officer> officers;
-
-    public static Company mapFromApi(final ApiCompanyDto companyDto) {
-        return Company.builder()
-                .companyNumber(companyDto.getCompany_number())
-                .companyStatus(companyDto.getCompany_status())
-                .companyType(companyDto.getCompany_type())
-                .title(companyDto.getTitle())
-                .dateOfCreation(companyDto.getDate_of_creation())
-                .address(Address.mapFromApi(companyDto.getAddress()))
-                .build();
-
-    }
 
 }

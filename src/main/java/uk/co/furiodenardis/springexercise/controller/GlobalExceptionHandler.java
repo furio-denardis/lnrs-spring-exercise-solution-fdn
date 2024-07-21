@@ -6,6 +6,7 @@ import org.springframework.web.ErrorResponse;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import uk.co.furiodenardis.springexercise.exceptions.CompanyNotFoundException;
 import uk.co.furiodenardis.springexercise.exceptions.DownstreamServiceException;
 
 @ControllerAdvice
@@ -23,6 +24,13 @@ public class GlobalExceptionHandler {
         ErrorResponse response = ErrorResponse.create(e,HttpStatus.BAD_REQUEST,
                 "Bad Request: " + e.getMessage());
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
+    }
+
+    @ExceptionHandler(CompanyNotFoundException.class)
+    public ResponseEntity<ErrorResponse> handleCompanyNotFoundException(CompanyNotFoundException e) {
+        ErrorResponse response = ErrorResponse.create(e,HttpStatus.BAD_REQUEST,
+                "Company registration number not found: " + e.getMessage());
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(response);
     }
 
 }

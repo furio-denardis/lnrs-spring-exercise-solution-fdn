@@ -47,7 +47,13 @@ public class SearchController {
                 searchCompanyRequest.getCompanyName() :
                 searchCompanyRequest.getCompanyNumber();
 
-        List<Company> companies = companySearch.searchCompany(apiKey, searchText, activeOnly);
+        List<Company> companies;
+        if (Objects.isNull(searchCompanyRequest.getCompanyNumber())) {
+            companies = companySearch.searchCompany(apiKey, searchText, activeOnly);
+        } else {
+            companies = List.of(companySearch.getCompanyByNumber(searchText));
+        }
+
         return SearchCompaniesResponse.builder()
                 .items(companies)
                 .total_results(companies.size())
